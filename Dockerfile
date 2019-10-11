@@ -2,7 +2,7 @@ FROM linuxserver/code-server:latest
 
 RUN \
   apt-get install -y \
-    snap \
+    snapd \
     yarn
 
 RUN \
