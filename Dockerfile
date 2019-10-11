@@ -4,7 +4,9 @@ RUN \
   apt-get update && \
   apt-get install -y \
     snapd \
-    yarn
+    yarn && \
+  systemctl enable snapd.service && \
+  systemctl start snapd.service
 
 RUN \
   snap install dotnet-sdk --classic && \
