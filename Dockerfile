@@ -3,10 +3,9 @@ FROM linuxserver/code-server:latest
 RUN \
   apt-get update && \
   apt-get install -y \
-    snapd \
+    snapd squashfuse fuse \
     yarn && \
-  systemctl enable snapd.service && \
-  systemctl start snapd.service
+  systemctl enable snapd.service
 
 RUN \
   snap install dotnet-sdk --classic && \
