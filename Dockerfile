@@ -4,10 +4,10 @@ RUN \
   apt-get update && \
   apt-get install -y \
     snapd squashfuse fuse \
-    yarn && \
-  systemctl enable snapd.service
+    yarn
 
 RUN \
+  systemctl enable snapd.service && \
   snap install dotnet-sdk --classic && \
   snap alias dotnet-sdk.dotnet dotnet && \
   echo "export MSBuildSDKsPath=/snap/dotnet-sdk/current/sdk/$(dotnet --version)/Sdks" >> ~/.profile
