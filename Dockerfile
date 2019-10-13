@@ -1,16 +1,16 @@
 FROM linuxserver/code-server:latest
 
 RUN \
+  add-apt-repository universe && \
   apt-get update && \
   apt-get install -y \
-    snapd squashfuse fuse \
     yarn
 
 RUN \
-  systemctl enable snapd.service && \
-  snap install dotnet-sdk --classic && \
-  snap alias dotnet-sdk.dotnet dotnet && \
-  echo "export MSBuildSDKsPath=/snap/dotnet-sdk/current/sdk/$(dotnet --version)/Sdks" >> ~/.profile
+  wget -q https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb && \
+  dpkg -i packages-microsoft-prod.deb && \
+  apt-get install apt-transport-https dotnet-sdk-3.0 && \
+  echo "export MSBuildSDKsPath=/opt/dotnet/sdk/$(dotnet --version)/Sdks" >> ~/.profile
 
 RUN \
   git config --global user.email "xlebenny@gmail.com" && \
