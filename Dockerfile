@@ -8,7 +8,7 @@ RUN \
   add-apt-repository universe && \
   apt-get update && \
   apt-get install -y \
-    yarn
+    yarn \
     wget
 
 RUN \
