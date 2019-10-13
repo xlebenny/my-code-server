@@ -1,6 +1,9 @@
 FROM linuxserver/code-server:latest
 
 RUN \
+  apt-get install software-properties-common
+
+RUN \
   add-apt-repository universe && \
   apt-get update && \
   apt-get install -y \
