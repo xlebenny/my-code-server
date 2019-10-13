@@ -15,6 +15,7 @@ RUN \
   wget -q https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb && \
   dpkg -i packages-microsoft-prod.deb && \
   apt-get install apt-transport-https dotnet-sdk-3.0 && \
+  sudo apt-get update && \
   echo "export MSBuildSDKsPath=/opt/dotnet/sdk/$(dotnet --version)/Sdks" >> ~/.profile
 
 RUN \
